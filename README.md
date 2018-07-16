@@ -39,31 +39,31 @@ file in.dbh has been reworked to look like this:
 <do_file_io> <do_chisq_file_io> <nbody_flag> <chisq_flag>  
 <n_spline> <n_iter>
 ```
-if `<halo_flag>` is 0 there is no halo, otherwise we have a halo
+if `<halo_flag>` is 0 there is no halo, otherwise we have a halo.
 
-if `<disk_flag>` 0 no disks, otherwise disk parameters are defined in in.diskpars
+if `<disk_flag>` is 0 no disks, otherwise disk parameters are defined in in.diskpars.
 
-if `<bulge_pars>` 0 no bulge, otherwise we have a bulge
+if `<bulge_pars>` is 0 no bulge, otherwise we have a bulge.
 
-if `<blackhole_flag>` is 0 no black hole, otherwise... you guessed it
+if `<blackhole_flag>` is 0 no black hole, otherwise... you guessed it.
 
 `<dr>` is the innermost bin - dr is a fraction of the smallest scale length above or
-   in in.diskpars
+   in in.diskpars.
    
-`<nr>` is the number of radial bins 
+`<nr>` is the number of radial bins.
 
-`<lmax>` is the maximum harmonic
+`<lmax>` is the maximum harmonic.
 
-`<do_file_io> 0 if you don't want extraneous file IO done. If not 0, the code will 
+`<do_file_io>` is 0 if you don't want extraneous file IO done. If not 0, the code will 
    output dbh.dat, cordbh.dat, and all the other fun data files that the 
    original output.
    
-`<do_chisq_file_io>` 0 if you don't want the chi square output files (with the model
-   observations)to be generated
+`<do_chisq_file_io>` is 0 if you don't want the chi square output files (with the model
+   observations)to be generated.
    
-`<dochisq>` 0 if you don't want the chi square calculations done
+`<dochisq>` is 0 if you don't want the chi square calculations done.
 
-`<nbody_flag>` to 1 if you want the N-body realisations to be generated.
+`<nbody_flag>` is 1 if you want the N-body realisations to be generated.
 
 in.gendenspsi:
 ```
@@ -199,8 +199,7 @@ The remaining parameters are as described above.
 The file parameters.out is the output for the MCMC program. Its default
 structure is as follows
 ```
-<step> <accepted steps> <chi square> <chisquare> <input parameters> <extra
-parameters>
+<step> <accepted steps> <chi square> <chisquare> <input parameters> <extra parameters>
 ```
 The parameters found in parameters.out include ALL the parameters found in
 mcmc_input, even those that do not change. This is for two reasons: first, it
