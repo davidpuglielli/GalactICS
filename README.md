@@ -39,13 +39,13 @@ file in.dbh has been reworked to look like this:
 <do_file_io> <do_chisq_file_io> <nbody_flag> <chisq_flag>  
 <n_spline> <n_iter>
 ```
-if `<halo_flag>` is 0 there is no halo, otherwise we have a halo.
+If `<halo_flag>` is 0 there is no halo, otherwise we have a halo.
 
-if `<disk_flag>` is 0 no disks, otherwise disk parameters are defined in in.diskpars.
+If `<disk_flag>` is 0 no disks, otherwise disk parameters are defined in in.diskpars.
 
-if `<bulge_pars>` is 0 no bulge, otherwise we have a bulge.
+If `<bulge_pars>` is 0 no bulge, otherwise we have a bulge.
 
-if `<blackhole_flag>` is 0 no black hole, otherwise... you guessed it.
+If `<blackhole_flag>` is 0 no black hole, otherwise... you guessed it.
 
 `<dr>` is the innermost bin - dr is a fraction of the smallest scale length above or
    in in.diskpars.
