@@ -224,5 +224,5 @@ GenGalaxyAndGetChiSquare().
 
 ## New features
 
-This version of the code includes adiabatic contraction and an optional gas disk.
+This version of the code includes adiabatic contraction and an optional gas disk, and some of it has been modified to run on NVidia GPUs with CUDA.
 These features are not fully realised, so use at your own risk.
