@@ -1,0 +1,64 @@
+Halo 1
+
+r_outer   0  100     0     0    500
+v_halo    0   6   0.0     1     20
+a_halo    0    5   0.0     1     25
+dr_trunc  0   10     0     0      0
+cusp      0    1  0.00     0      2
+stream    0  0.5  0.00     0      1
+
+Bulge 1
+
+n_sersic  0     3  0.01     0.6   6
+ppp       0    -1     0     0     0
+v_bulge   0   2.5  0.01     0.1     10
+a_bulge   0     2  0.01     0.01     10
+stream    0   0.5  0.01     0     1
+
+BlackHole 0
+
+mass      0     0     0     0     0
+
+Disk 1
+
+m_disk    0    20   0.5     1   700
+r_disk    0     7  0.05     1    20
+out_disk  0    60   0.5    50   200
+z_disk    0   1.5  0.01   0.1     6
+dr_trunc  0    10     0     0     0
+sigma_0   0     1  0.02   0.1     6
+r_sigma   0     7  0.05     3    20
+
+Disk 0
+
+m_disk    0    50   0.5     1   300
+r_disk    0     5  0.05     4    20
+out_disk  0    50   0.5    10   200
+z_disk    0   1.5  0.01   0.1     6
+dr_trunc  0    10     0     0     0
+sigma_0   0     2  0.02   0.5     4
+r_sigma   0     5  0.05     3    20
+
+Astro 
+
+mldisk    0     1   0.0  0.01     10
+mlbulge   0     1  0.01  0.01     10
+inclin    0    66     0  0.01  89.9
+distance  0  15000    0  5000 30000
+v_sys     0     0     0     0     0
+r_sys     0     0     0     0     0
+
+Error
+
+e1        0   0.01   0.0  0.00001    0.5
+e2        0   0.001  0.0  0.00001    1
+e3        0   0.001  0.0  0.00001    1
+e4        0   0.001  0.0  0.00001    1
+
+Extra
+
+halo_mass  0   0.0  0.0  0.0      5000
+disk_mass  0   0.0  0.0  0.0      1000
+bulge_mass 0   0.0  0.0  0.0       500
+Q          0   0.0  0.0  0.0        20
+X          0   0    0    0          20

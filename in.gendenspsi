@@ -1,0 +1,10 @@
+n_psi 1000
+n_int 250
+max_iter 20
+n_simpson 200
+tolerance_factor 1e-08
+n_los 20
+n_vel 200
+nr_spline 50
+n_iter 10
+fraction 0.75
