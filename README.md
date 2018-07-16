@@ -40,19 +40,29 @@ file in.dbh has been reworked to look like this:
 <n_spline> <n_iter>
 ```
 if `<halo_flag>` is 0 there is no halo, otherwise we have a halo
+
 if `<disk_flag>` 0 no disks, otherwise disk parameters are defined in in.diskpars
+
 if `<bulge_pars>` 0 no bulge, otherwise we have a bulge
+
 if `<blackhole_flag>` is 0 no black hole, otherwise... you guessed it
+
 `<dr>` is the innermost bin - dr is a fraction of the smallest scale length above or
    in in.diskpars
+   
 `<nr>` is the number of radial bins 
+
 `<lmax>` is the maximum harmonic
+
 `<do_file_io> 0 if you don't want extraneous file IO done. If not 0, the code will 
    output dbh.dat, cordbh.dat, and all the other fun data files that the 
    original output.
+   
 `<do_chisq_file_io>` 0 if you don't want the chi square output files (with the model
    observations)to be generated
+   
 `<dochisq>` 0 if you don't want the chi square calculations done
+
 `<nbody_flag>` to 1 if you want the N-body realisations to be generated.
 
 in.gendenspsi:
