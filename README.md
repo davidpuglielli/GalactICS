@@ -19,7 +19,6 @@ parameters to a set of observations by running MCMC.
 
 ## Prerequisites
 
-
 The GSL is required in the standard directories. The Makefile indicates G++, so
 modify as needed.
 
@@ -27,7 +26,7 @@ modify as needed.
 
 The input for the code is several files that define the required parameters. The
 file in.dbh has been reworked to look like this:
-
+```
 <halo_flag>                                                    
 <halo cutoff> <halo velocity> <halo radius> <halo truncation width> <cusp>
     <halo stream fraction>
@@ -39,41 +38,41 @@ file in.dbh has been reworked to look like this:
 <dr> <nr> <lmax> 
 <do_file_io> <do_chisq_file_io> <nbody_flag> <chisq_flag>  
 <n_spline> <n_iter>
-
-if halo_flag=0 no halo, otherwise we have a halo
-if disk_flag=0 no disks, otherwise disk parameters are defined in in.diskpars
-if bulge_pars=0 no bulge, otherwise we have a bulge
-if blackhole_flag=0 no black hole, otherwise... you guessed it
-dr is the innermost bin - dr is a fraction of the smallest scale length above or
+```
+if `<halo_flag>` is 0 there is no halo, otherwise we have a halo
+if `<disk_flag>` 0 no disks, otherwise disk parameters are defined in in.diskpars
+if `<bulge_pars>` 0 no bulge, otherwise we have a bulge
+if `<blackhole_flag>` is 0 no black hole, otherwise... you guessed it
+`<dr>` is the innermost bin - dr is a fraction of the smallest scale length above or
    in in.diskpars
-nr is the number of bins (which remember are logarithmically distributed)
-lmax is the maximum harmonic
-do_file_io=0 if you don't want extraneous file io done. If not 0, the code will 
+`<nr>` is the number of radial bins 
+`<lmax>` is the maximum harmonic
+`<do_file_io> 0 if you don't want extraneous file IO done. If not 0, the code will 
    output dbh.dat, cordbh.dat, and all the other fun data files that the 
    original output.
-do_chisq_file_io=0 if you don't want the chi square output files (with the model
+`<do_chisq_file_io>` 0 if you don't want the chi square output files (with the model
    observations)to be generated
-dochisq=0 if you don't want the chi square calculations done
-nbody_flag=1 if you want the N-body realisations to be generated.
+`<dochisq>` 0 if you don't want the chi square calculations done
+`<nbody_flag>` to 1 if you want the N-body realisations to be generated.
 
 in.gendenspsi:
-
-n_psi
-n_int
-max_iter (for root bisection)
-tolerance_factor (for root bisection)
-n_los
-n_vel
-
+```
+<n_psi>
+<n_int>
+<max_iter> (for root bisection)
+<tolerance_factor> (for root bisection)
+<n_los>
+<n_vel>
+```
 in.diskpars: 
 
 This file has the following structure: 
-
+```
 <whitespace delineated parameters> 0
 <whitespace delineated parameters> 0
 <whitespace delineated parameters> 0
 etc
-
+```
 where each line corresponds to a different disk component and the 0s indicate 
 the end of the set of parameters for that component. The program counts the 
 number of disks based on the number of 0s in this file. If the code encounters a
@@ -103,12 +102,12 @@ with each call of a single DiskProfile function, because not all three values
 are always needed when DiskProfile is called.
 
 The current parameters for in.diskpars are the following:
-
+```
 <Exponential disk mass M_d> <disk scale radius R_d> <truncation radius> 
 <sech scale height z_d> <truncation width> <Central dispersion sigma_0> 
 <Dispersion scale length R_sigma> <inner truncation radius R_h> 
 <inner truncation shape parameter alpha>
-
+```
 Other parameters will require modification of the GetDiskParameters function in 
 diskprofiles.cpp to read in these variables. You'll want to declare any such 
 additional parameters in galaxy.cpp and galaxy.h (in the galaxy struct) as 
@@ -121,7 +120,7 @@ file determines the starting parameters, what components you want, and anything
 else about the models for a MCMC run (this information is not read from the 
 input files for GenerateGalaxy as described above). The structure of this file 
 is as follows (where Halo, Bulge etc. are the actual strings "Halo", etc):
-
+```
 Halo <halo_flag>
 <number> <name> <start_value> <sigma> <minimum> <maximum>
 <etc for all halo params>
@@ -151,7 +150,7 @@ Astro
 Error
 <number> <name> <start_value> <sigma> <minimum> <maximum>
 <etc for all error params>
-
+```
 It's your responsibility to ensure that the number of disk ML ratios in the 
 astro parameters matches the number of disks. The code doesn't check this 
 because doing so would have made it harder to add other astro parameters if 
@@ -160,39 +159,39 @@ the number of data sets read in earlier, otherwise it spits out an error and
 exits.
 
 The file 'mcmc.in' requires the following parameters:
-
+```
 <continue_flag> <chainlength> <scale_factor> <temperature> <scale_length>
 <dr> <nr> <lmax> <dofileio> <n_psi> <n_int> <max_iter> <tolerance_factor>
 <n_los> <n_vel>
-
+```
 where
 
-<continue_flag> here is a flag telling the program whether to start from scratch
+`<continue_flag>` here is a flag telling the program whether to start from scratch
 or read in the last line of parameters.out and start from there. If zero it's 
 the former, otherwise it's the latter. The program will exit if mcmc_input and 
 parameters.out do not match.
 
-<chainlength> is the number of steps to take in the MCMC chain, and is added to 
+`<chainlength>` is the number of steps to take in the MCMC chain, and is added to 
 whatever was already in parameters.out if <continue_flag> is true. 
 
-<scale_factor> is the amount by which to multiply all the sigmas in mcmc_input, 
+`<scale_factor>` is the amount by which to multiply all the sigmas in mcmc_input, 
 and is an easy way to scale them all by a constant if they're generally too 
 large or too small. 
 
-<temperature> is the starting temperature if simulated annealing is used. As of 
+`<temperature>` is the starting temperature if simulated annealing is used. As of 
 writing this has not been implemented.
 
-<scale_length> is the scale length for the decline of the temperature if 
+`<scale_length>` is the scale length for the decline of the temperature if 
 simulated annealing is used.
 
 The remaining parameters are as described above.
 
 The file parameters.out is the output for the MCMC program. Its default
 structure is as follows
-
+```
 <step> <accepted steps> <chi square> <chisquare> <input parameters> <extra
 parameters>
-
+```
 The parameters found in parameters.out include ALL the parameters found in
 mcmc_input, even those that do not change. This is for two reasons: first, it
 makes easier to write a program to take the parameters in any line and write
